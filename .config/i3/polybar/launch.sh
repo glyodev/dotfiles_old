@@ -9,4 +9,8 @@ else
     polybar --config="$HOME/.config/i3/polybar/config-dark.ini" emi-bar &
 fi
 
+<<<<<<< HEAD
 #$HOME/.config/polybar/theme.sh
+=======
+$HOME/.config/polybar/theme.sh
+>>>>>>> 58abe29e1dddcb882b312e2e798d23c5997bb438

@@ -21,7 +21,11 @@ window {
     y-offset:       -100;
     border-radius:  25px;
 
+<<<<<<< HEAD
 		background-color:   @bg1;
+=======
+		background-color:   @bg0;
+>>>>>>> 58abe29e1dddcb882b312e2e798d23c5997bb438
 }
 
 mainbox {
@@ -85,7 +89,11 @@ element selected normal, element selected active {
 }
 
 element-icon {
+<<<<<<< HEAD
     size:           3em;
+=======
+    size:           2.5em;
+>>>>>>> 58abe29e1dddcb882b312e2e798d23c5997bb438
     vertical-align: 1;
 }
 

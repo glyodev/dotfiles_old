@@ -19,7 +19,11 @@ if [[ "$DESKTOP_SESSION" == "bspwm" || "$XDG_SESSION_DESKTOP" == "bspwm" || "$XD
 	# blueman-applet &
 	#blueberry-tray
 	sxhkd &
+<<<<<<< HEAD
 	#nitrogen --restore &
+=======
+	nitrogen --restore &
+>>>>>>> 58abe29e1dddcb882b312e2e798d23c5997bb438
 	# xfce4-terminal -x htop &
 	# alacritty --command=htop &
 	# alacritty --command=bashtop &
@@ -36,9 +40,13 @@ fi
 
 if [[ "$DESKTOP_SESSION" == "i3" || "$XDG_SESSION_DESKTOP" == "i3" || "$XDG_CURRENT_DESKTOP" == "i3" ]]; then
 	###########################################################
+<<<<<<< HEAD
 	#setxkbmap latam
 	#setxkbmap us -variant intl
 	setxkbmap us -variant altgr-intl
+=======
+	setxkbmap latam
+>>>>>>> 58abe29e1dddcb882b312e2e798d23c5997bb438
 	###########################################################
 fi
 
