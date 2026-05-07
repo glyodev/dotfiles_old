@@ -7,7 +7,7 @@ export PATH="$FLYCTL_INSTALL/bin:$PATH"
 export EDITOR=vim
 export JAVA_HOME="/usr/lib/jvm/default"
 export PAGER="less -FX"
-export LESS="-FX"
+export LESS="-FXR"
 
 export WINEESYNC=1
 export WINEFSYNC=1

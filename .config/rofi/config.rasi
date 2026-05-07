@@ -4,14 +4,7 @@
 
 //@theme "~/.config/rofi/themes/spotlight-dark.rasi"
 
-<<<<<<< HEAD
-//@theme "~/.config/rofi/themes/spotlight-dark.rasi"
-
-//@theme "~/.config/rofi/themes/spotlight-dark.rasi"
-
-//@theme "~/.config/rofi/themes/spotlight-dark.rasi"
+//@theme "/home/glyo/.config/rofi/themes/rounded-purple-dark.rasi"
+@theme "~/.config/rofi/themes/spotlight-dark.rasi"
 
 @theme "/home/glyo/.config/rofi/themes/rounded-purple-dark.rasi"
-=======
-@theme "~/.config/rofi/themes/spotlight-dark.rasi"
->>>>>>> 58abe29e1dddcb882b312e2e798d23c5997bb438

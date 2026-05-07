@@ -4,48 +4,27 @@ bindsym $mod+Shift+r restart
 
 font pango:monospace 9
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 58abe29e1dddcb882b312e2e798d23c5997bb438
 # --- NO barra ---
 bar {
     mode invisible
 		tray_output none
 }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 58abe29e1dddcb882b312e2e798d23c5997bb438
 # --- GAPS ---
 gaps inner 7
 gaps outer 0
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 58abe29e1dddcb882b312e2e798d23c5997bb438
 # --- Focus ---
 focus_follows_mouse yes
 mouse_warping none
-
-<<<<<<< HEAD
 
 # --- Terminales ---
 bindsym $mod+Return exec alacritty
 bindsym Ctrl+$alt+t exec xfce4-terminal
 
-=======
-# --- Terminales ---
-bindsym $mod+Return exec alacritty
-bindsym Ctrl+Alt+t exec xfce4-terminal
->>>>>>> 58abe29e1dddcb882b312e2e798d23c5997bb438
-
 # --- File manager ---
 bindsym $mod+e exec thunar
-
-<<<<<<< HEAD
 
 # --- Launcher ---
 bindsym $mod+m exec rofi -show drun combi -icon-theme 'Win11' -show-icons
@@ -56,14 +35,6 @@ bindsym $mod+$alt+m exec rofi -modi emoji -show emoji
 bindsym $mod+x exec archlinux-logout
 bindsym $mod+l exec ~/.config/i3/polybar/scripts/lock.sh
 
-=======
-# --- Launcher ---
-bindsym $mod+m exec rofi -show drun combi -icon-theme 'Win11' -show-icons
-
-# --- Logout ---
-bindsym $mod+x exec archlinux-logout
->>>>>>> 58abe29e1dddcb882b312e2e798d23c5997bb438
-
 # --- Workspaces ---
 set $ws1 1
 set $ws2 2
@@ -73,7 +44,6 @@ set $ws5 5
 set $ws6 6
 set $ws7 7
 
-<<<<<<< HEAD
 workspace $ws1 output eDP
 workspace $ws2 output eDP
 workspace $ws3 output eDP
@@ -81,15 +51,6 @@ workspace $ws4 output eDP
 workspace $ws5 output HDMI-A-0
 workspace $ws6 output HDMI-A-0
 workspace $ws7 output HDMI-A-0
-=======
-workspace $ws1 output eDP-1
-workspace $ws2 output eDP-1
-workspace $ws3 output eDP-1
-workspace $ws4 output eDP-1
-workspace $ws5 output HDMI-1
-workspace $ws6 output HDMI-1
-workspace $ws7 output HDMI-1
->>>>>>> 58abe29e1dddcb882b312e2e798d23c5997bb438
 
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -124,22 +85,10 @@ bindsym $mod+Tab fullscreen toggle
 bindsym $mod+Shift+t layout stacking
 bindsym $mod+t layout tabbed
 
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> 58abe29e1dddcb882b312e2e798d23c5997bb438
 # --- Floating ---
 bindsym $mod+s floating toggle
 #bindsym $mod+space focus mode_toggle
 
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> 58abe29e1dddcb882b312e2e798d23c5997bb438
 # --- Resize ---
 #mode "resize" {
 #    bindsym Left resize shrink width 20 px
@@ -158,12 +107,6 @@ bindsym $mod+Control+Down resize grow height 20 px
 
 floating_modifier $mod
 
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> 58abe29e1dddcb882b312e2e798d23c5997bb438
 # --- Cerrar ---
 bindsym $mod+q kill
 for_window [class="Gimp"] move to workspace 8, floating enable
@@ -177,18 +120,13 @@ for_window [class="Proton-authenticator"] floating enable
 bindsym XF86MonBrightnessUp exec brightnessctl set +10%
 bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
 
-<<<<<<< HEAD
 bindsym XF86AudioRaiseVolume exec pamixer --increase 2 && notify-send -r 9999 -i audio-volume-high "Volume + $(pamixer --get-volume)%"
 bindsym XF86AudioLowerVolume exec pamixer --decrease 2 && notify-send -r 9999 -i audio-volume-low "Volume - $(pamixer --get-volume)%"
-=======
-bindsym XF86AudioRaiseVolume exec pamixer --increase 2
-bindsym XF86AudioLowerVolume exec pamixer --decrease 2
->>>>>>> 58abe29e1dddcb882b312e2e798d23c5997bb438
 bindsym XF86AudioMute exec pamixer --toggle-mute
 
 bindsym Print exec xfce4-screenshooter
 bindsym Shift+Print exec xfce4-screenshooter -r
-<<<<<<< HEAD
+bindsym Shift+Ctrl+Print exec xfce4-screenshooter -f
 bindsym $mod+Control+R exec polybar-msg cmd restart
 for_window [class=".*"] border pixel 1 
 
@@ -196,33 +134,14 @@ for_window [class=".*"] border pixel 1
 
 
 # i3 alt tab
-
-#bindsym $alt+Tab exec --no-startup-id ~/.config/i3/scripts/i3-focus-last-window
-#bindsym $alt+Shift+Tab exec --no-startup-id ~/.config/i3/scripts/i3-focus-last-window --reverse
-
 exec --no-startup-id i3-focus-last server
 bindsym $alt+Tab exec --no-startup-id i3-focus-last switch
 bindsym $alt+Shift+Tab exec --no-startup-id i3-focus-last menu
 
-
-
-=======
-
-for_window [class=".*"] border pixel 1 
+for_window [class=".*"] border pixel 1
 
 #bindsym $alt+Tab exec --no-startup-id ~/.config/i3/scripts/i3-focus-last-window
 #bindsym $alt+Shift+Tab exec --no-startup-id ~/.config/i3/scripts/i3-focus-last-window --reverse
-
->>>>>>> 58abe29e1dddcb882b312e2e798d23c5997bb438
-
-# Polybar
-#exec --no-startup-id sleep 1 && ~/.config/i3/polybar/launch.sh
-#exec_always --no-startup-id \
-  #bash -c 'until i3-msg -t get_workspaces >/dev/null 2>&1; do sleep 0.2; done; ~/.config/i3/polybar/launch.sh'
-
-<<<<<<< HEAD
-
-
 
 # --- Autostart ---
 exec --no-startup-id xset dpms 540 540 900
@@ -241,10 +160,13 @@ exec --no-startup-id xmodmap ~/.Xmodmap
 
 
 
+
 # Apps
 bindsym $mod+p exec arandr
 bindsym $mod+Control+p exec proton-authenticator
 bindsym $mod+Shift+p exec pavucontrol
+bindsym $mod+o exec alacritty -e ~/.scripts/opencode-launcher
+
 
 
 
@@ -256,15 +178,14 @@ exec --no-startup-id /usr/lib/xdg-desktop-portal-gtk
 #exec --no-startup-id xfce4-power-manager
 exec --no-startup-id xfce4-clipman
 exec --no-startup-id nm-applet
-exec --no-startup-id blueman-applet
-exec --no-startup-id picom --backend glx --vsync 
+#exec --no-startup-id blueman-applet
+exec --no-startup-id picom --backend glx --vsync
 #exec --no-startup-id nitrogen --restore
 exec --no-startup-id feh Pictures/Backgrounds/1.jpg --bg-scale
 
 
 exec --no-startup-id ~/.config/i3/polybar/launch.sh
-#exec --no-startup-id bash -c 'sleep 3 && ~/.config/i3/polybar/launch.sh'
-=======
+
 # --- Autostart ---
 exec --no-startup-id xset s 600 600
 exec --no-startup-id xset dpms 600 600 900
@@ -273,18 +194,4 @@ exec --no-startup-id wmname LG3D
 
 # Script monitores (el mismo que usas)
 exec --no-startup-id ~/.screenlayout/resolucion.sh
-
-# Extras
-
-exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
-exec --no-startup-id /usr/lib/xdg-desktop-portal-gtk
-exec --no-startup-id xfce4-power-manager
-exec --no-startup-id xfce4-clipman
-exec --no-startup-id picom --backend glx --vsync 
-exec --no-startup-id nitrogen --restore
-
-
-#exec --no-startup-id ~/.config/i3/polybar/launch.sh
-exec --no-startup-id bash -c 'sleep 3 && ~/.config/i3/polybar/launch.sh'
->>>>>>> 58abe29e1dddcb882b312e2e798d23c5997bb438
 
