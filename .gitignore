@@ -7,51 +7,38 @@
 !.profile
 !.xprofile
 !.Xresources
-<<<<<<< HEAD
 !.Xmodmap
-=======
->>>>>>> 58abe29e1dddcb882b312e2e798d23c5997bb438
 
 !.config
 
 !.config/alacritty
-!.config/alacritty/alacritty.toml
-!.config/alacritty/fonts.toml
-!.config/alacritty/rice-colors.toml
-!.config/alacritty/rice-colors-dark.toml
+!.config/alacritty/*
 
 !.config/qtile
-!.config/qtile/autostart.sh
-!.config/qtile/config.py
+!.config/qtile/*
 
 !.config/picom
-!.config/picom/picom.conf
-!.config/picom/picom0.conf
-!.config/picom/picom.desktop
+!.config/picom/*
 
 !.config/neofetch
-!.config/neofetch/ArchLinux.png
+!.config/neofetch/*
 !.config/neofetch/normal
 !.config/neofetch/normal/*
 !.config/neofetch/small
 !.config/neofetch/small/*
 
 !.config/kitty
-!.config/kitty/kitty.conf
+!.config/kitty/*
 
 !.config/rofi
 !.config/rofi/*
-!.config/rofi/themes/rounded-blue-dark.rasi
-!.config/rofi/themes/rounded-common.rasi
-!.config/rofi/themes/rounded-purple-dark.rasi
-!.config/rofi/themes/spotlight-dark.rasi
-!.config/rofi/themes/spotlight.rasi
+!.config/rofi/themes
+!.config/rofi/themes/*
 
 !.config/gtk-3.0
-!.config/gtk-3.0/gtk.css
-!.config/gtk-3.0/settings.ini
+!.config/gtk-3.0/*
 !.config/gtk-4.0
-!.config/gtk-4.0/settings.ini
+!.config/gtk-4.0/*
 
 !.config/themes-bspwm.zip
 !.config/bspwm
@@ -95,14 +82,7 @@
 !.config/shell/apps/*
 
 !.themes
-!.themes/Sweet-Ambar-Blue-Dark-v40.tar.xz
-!.themes/Sweet-Dark-v40.tar.xz
-!.themes/WhiteSur-Dark.tar.xz
-!.themes/WhiteSur-Light.tar.xz
-!.themes/Sonoma.zip
-!.themes/Apple-Sonoma-Dark.tar.xz
-!.themes/Apple-Ventura.tar.xz
-!.themes/macosgary.zip
+!.themes/*
 
 !.icons
 !.icons/Win11.tar.xz
@@ -132,3 +112,9 @@
 !.local/share/fonts
 !.local/share/fonts/Bahnschrift
 !.local/share/fonts/Bahnschrift/*
+!.local/share/fonts/EdwardianScriptITC
+!.local/share/fonts/EdwardianScriptITC/*
+!.local/share/fonts/Minecraft
+!.local/share/fonts/Minecraft/*
+!.local/share/fonts/SFMono
+!.local/share/fonts/SFMono/*
