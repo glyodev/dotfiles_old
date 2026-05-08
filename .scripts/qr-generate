@@ -6,6 +6,7 @@ import qrcode
 from PIL import Image, ImageDraw
 from datetime import datetime
 
+
 def generate_qr(url, image_path=None):
     # Generar el código QR
     qr = qrcode.QRCode(
@@ -14,12 +15,12 @@ def generate_qr(url, image_path=None):
         box_size=10,
         border=4,
     )
-    
+
     qr.add_data(url)
     qr.make(fit=True)
-    
+
     # Crear la imagen QR
-    qr_img = qr.make_image(fill_color="black", back_color="white").convert('RGB')
+    qr_img = qr.make_image(fill_color="black", back_color="white").convert("RGB")
 
     if image_path:
         try:
@@ -37,19 +38,25 @@ def generate_qr(url, image_path=None):
 
             # Calcular el tamaño del espacio en blanco en el centro del QR
             qr_size = qr_img.size[0]
-            center_box_size = logo_size + 10  # Tamaño del cuadro central en blanco (ajusta el +10 según necesites)
+            center_box_size = (
+                logo_size + 10
+            )  # Tamaño del cuadro central en blanco (ajusta el +10 según necesites)
 
             # Dibujar un cuadro blanco en el centro del QR
             draw = ImageDraw.Draw(qr_img)
             draw.rectangle(
-                ((qr_size - center_box_size) // 2, (qr_size - center_box_size) // 2,
-                 (qr_size + center_box_size) // 2, (qr_size + center_box_size) // 2),
-                fill="white"
+                (
+                    (qr_size - center_box_size) // 2,
+                    (qr_size - center_box_size) // 2,
+                    (qr_size + center_box_size) // 2,
+                    (qr_size + center_box_size) // 2,
+                ),
+                fill="white",
             )
 
             # Calcular la posición para centrar la imagen en el cuadro blanco
             pos = ((qr_img.size[0] - logo_size) // 2, (qr_img.size[1] - logo_size) // 2)
-            
+
             # Pegar la imagen circular en el centro del QR
             qr_img.paste(logo, pos, mask=mask)
 
@@ -58,18 +65,21 @@ def generate_qr(url, image_path=None):
             sys.exit(1)
 
     # Crear la carpeta si no existe
-    save_dir = os.path.expanduser('~/Pictures/qr/')
+    save_dir = os.path.expanduser("~/Pictures/qr/")
     os.makedirs(save_dir, exist_ok=True)
 
     # Obtener la fecha y hora actual para el nombre del archivo
-    timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 
     # Determinar el nombre del archivo según si hay imagen o no
-    output_file = os.path.join(save_dir, f'qr_image_{timestamp}.png' if image_path else f'qr_{timestamp}.png')
-    
+    output_file = os.path.join(
+        save_dir, f"qr_image_{timestamp}.png" if image_path else f"qr_{timestamp}.png"
+    )
+
     # Guardar la imagen QR
     qr_img.save(output_file)
     print(f"QR guardado como {output_file}")
+
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
@@ -80,4 +90,3 @@ if __name__ == "__main__":
     image_path = sys.argv[2] if len(sys.argv) > 2 else None
 
     generate_qr(url, image_path)
-
