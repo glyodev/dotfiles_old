@@ -11,14 +11,67 @@ RESET="\e[0m"
 
 print_header() {
     clear
+    
     echo -e "${CYAN}┌──────────────────────────────────────────────────────────────────┐${RESET}"
     echo -e "${CYAN}│                    🚀 ${BOLD}Developer Launcher 🚀${RESET}${CYAN}                      │${RESET}"
     echo -e "${CYAN}└──────────────────────────────────────────────────────────────────┘${RESET}"
-    echo -e "\n ${YELLOW}Tip:${RESET} TAB autocomplete | SPACE select | ENTER confirm | Ctrl+D exit\n"
+    
+    echo -e "${CYAN}╭──────────────────────────────────────────────────────────────────╮${RESET}"
+    echo -e "${CYAN}│${RESET}  ${GRAY}Quick project launcher for your development workflow.${RESET}           ${CYAN}│${RESET}"
+    echo -e "${CYAN}│${RESET}                                                                  ${CYAN}│${RESET}"
+    echo -e "${CYAN}│${RESET}  ${GREEN}•${RESET} Open projects with ${BOLD}OpenCode${RESET}, ${BOLD}VSCode${RESET}, or terminal.             ${CYAN}│${RESET}"
+    echo -e "${CYAN}│${RESET}  ${GREEN}•${RESET} Automatically create missing directories.                     ${CYAN}│${RESET}"
+    echo -e "${CYAN}│${RESET}  ${GREEN}•${RESET} Integrated with ${BOLD}i3wm${RESET} workspaces.                              ${CYAN}│${RESET}"
+    echo -e "${CYAN}│${RESET}  ${GREEN}•${RESET} Multi-select launch options with ${BOLD}gum${RESET}.                         ${CYAN}│${RESET}"
+    echo -e "${CYAN}╰──────────────────────────────────────────────────────────────────╯${RESET}"
+    
+    echo -e "\n ${YELLOW}Tips:${RESET}"
+    echo -e " ${GRAY}• TAB${RESET} autocomplete directory"
+    echo -e " ${GRAY}• SPACE${RESET} select options"
+    echo -e " ${GRAY}• ENTER${RESET} confirm"
+    echo -e " ${GRAY}• Ctrl+D${RESET} exit\n"
 }
 
 print_header
 
+launch_apps() {
+    echo -e "${CYAN}────────────────────────────────────────────────────────────────────${RESET}"
+    echo -e "\n ${CYAN}🚀 Opening:${RESET} ${BOLD}$(pwd)${RESET}\n"
+    
+    options=$(gum choose --no-limit \
+        --cursor.foreground="#00ffff" \
+        --selected.foreground="#00ff00" \
+        --selected-prefix="✓ " \
+        --cursor-prefix=" " \
+        --selected="󰅨 OpenCode" \
+        " Open terminal" \
+        "󰨞 VSCode" \
+        "󰅨 OpenCode"
+    )
+    
+    if [[ -n "$options" ]]; then
+        [[ "$options" == *"󰅨 OpenCode"* ]] && \
+        setsid alacritty \
+        --working-directory "$(pwd)" \
+        -e opencode "$(pwd)" \
+        >/dev/null 2>&1 &
+        sleep 0.25
+        
+        [[ "$options" == *" Open terminal"* ]] && \
+        setsid alacritty \
+        --working-directory "$(pwd)" \
+        >/dev/null 2>&1 &
+        sleep 0.25
+        
+        [[ "$options" == *"󰨞 VSCode"* ]] && \
+        i3-msg "workspace 2; exec code \"$(pwd)\""
+        sleep 1
+        exit
+    else
+        echo -e " ${RED}❌ No option selected${RESET}"
+        sleep 0.5
+    fi
+}
 
 while true; do
     echo -e "${CYAN}────────────────────────────────────────────────────────────────────${RESET}"
@@ -32,55 +85,31 @@ while true; do
     
     if [ -z "$dir" ]; then
         echo -e " ${RED}❌ No directory entered${RESET}"
-        # echo -e "${CYAN}────────────────────────────────────────────────────────────────────${RESET}"
         continue
     fi
     
-    if cd "$dir" 2>/dev/null; then
-        echo -e "${CYAN}────────────────────────────────────────────────────────────────────${RESET}"
-        echo -e "\n ${CYAN}🚀 Opening:${RESET} ${BOLD}$(pwd)${RESET}\n"
-        
-        options=$(gum choose --no-limit \
-            --cursor.foreground="#00ffff" \
-            --selected.foreground="#00ff00" \
-            --selected-prefix="✓ " \
-            --cursor-prefix=" " \
-            --selected="󰅨 OpenCode" \
-            " Open terminal" \
-            "󰨞 VSCode" \
-            "󰅨 OpenCode"
-        )
-        
-        if [[ -n "$options" ]]; then
-            [[ "$options" == *" Open terminal"* ]] && \
-            setsid alacritty --working-directory "$(pwd)" \
-            >/dev/null 2>&1 &
-            sleep 0.25
-            
-            [[ "$options" == *"󰅨 OpenCode"* ]] && \
-            setsid alacritty \
-            --working-directory "$(pwd)" \
-            -e opencode "$(pwd)" \
-            >/dev/null 2>&1 &
-            sleep 0.25
-            
-            [[ "$options" == *"󰨞 VSCode"* ]] && \
-            i3-msg "workspace 2; exec code \"$(pwd)\""
-            sleep 0.25
-            exit
-        else
-            echo -e " ${RED}❌ No option selected${RESET}"
-            sleep 0.5
-        fi
+    # Resolve full path
+    if [[ "$dir" = /* ]]; then
+        full_path="$dir"
     else
-        # Resolve full path for display
-        if [[ "$dir" = /* ]]; then
-            full_path="$dir"
-        else
-            full_path="$(pwd)/$dir"
-        fi
+        full_path="$(pwd)/$dir"
+    fi
+    
+    if [ -d "$full_path" ]; then
+        cd "$full_path" || continue
+        launch_apps
+    else
+        echo
         
-        echo -e " ${RED}❌ Does not exist:${RESET} ${BOLD}$full_path${RESET}"
-        echo -e "${CYAN}────────────────────────────────────────────────────────────────────${RESET}"
+        if gum confirm --default=false "Directory does not exist. Create it?"; then
+            mkdir -p "$full_path"
+            cd "$full_path" || continue
+            
+            echo -e "\n ${CYAN}📁 Directory created:${RESET} ${BOLD}$full_path${RESET}\n"
+            
+            launch_apps
+        else
+            echo -e " ${RED}❌ Does not exist:${RESET} ${BOLD}$full_path${RESET}"
+        fi
     fi
 done
