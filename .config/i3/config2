@@ -57,7 +57,7 @@ client.urgent           #2f343a #900000 #ffffff #900000
 ###############
 
 exec --no-startup-id picom --config ~/.config/i3/picom/picom.conf -b --experimental-backends
-exec_always --no-startup-id ~/.config/i3/polybar/launch.sh
+exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec --no-startup-id nm-applet # NetworkManager
 exec --no-startup-id fcitx5
 

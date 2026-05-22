@@ -48,7 +48,7 @@ bindsym $mod+$alt+m exec rofi -modi emoji -show emoji
 
 # --- Logout ---
 bindsym $mod+x exec archlinux-logout
-bindsym $mod+l exec ~/.config/i3/polybar/scripts/lock.sh
+bindsym $mod+l exec ~/.config/polybar/scripts/lock.sh
 
 
 
@@ -190,7 +190,7 @@ bindsym $mod+v split v
 # --- Autostart ---
 exec --no-startup-id xset dpms 540 540 900
 exec --no-startup-id xset s 600 600
-exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/.config/i3/polybar/scripts/lock.sh
+exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/.config/polybar/scripts/lock.sh
 exec --no-startup-id xidlehook \
   --not-when-fullscreen \
   --timer 900 'systemctl suspend' ''
@@ -230,7 +230,7 @@ exec --no-startup-id picom --backend glx --vsync
 exec --no-startup-id feh Pictures/Backgrounds/15.jpg --bg-scale
 
 
-exec --no-startup-id ~/.config/i3/polybar/launch.sh
+exec --no-startup-id ~/.config/polybar/launch.sh
 
 # --- Autostart ---
 exec --no-startup-id xset s 600 600
