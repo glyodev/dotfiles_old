@@ -5,35 +5,52 @@ bindsym $mod+Shift+r restart
 font pango:monospace 9
 
 
+
 # --- NO barra ---
 bar {
     mode invisible
 		tray_output none
 }
 
+
+
 # --- GAPS ---
 gaps inner 7
 gaps outer 0
+
+
 
 # --- Focus ---
 focus_follows_mouse yes
 mouse_warping none
 
+
+
 # --- Terminales ---
-bindsym $mod+Return exec alacritty
+#bindsym $mod+Return exec alacritty
 bindsym Ctrl+$alt+t exec xfce4-terminal
+bindsym $mod+Return split h; exec alacritty
+bindsym $mod+Ctrl+Return split v; exec alacritty
+
 
 # --- File manager ---
 bindsym $mod+e exec thunar
 
+
+
 # --- Launcher ---
-bindsym $mod+m exec rofi -show drun combi -icon-theme 'Win11' -show-icons
+#bindsym $mod+m exec rofi -show drun combi -icon-theme 'Win11' -show-icons
+#bindsym $mod+m exec rofi -show drun combi -icon-theme 'Fluent' -show-icons
+bindsym $mod+m exec rofi -show drun combi -icon-theme 'Reversal' -show-icons
 bindsym $mod+$alt+m exec rofi -modi emoji -show emoji
+
 
 
 # --- Logout ---
 bindsym $mod+x exec archlinux-logout
 bindsym $mod+l exec ~/.config/i3/polybar/scripts/lock.sh
+
+
 
 # --- Workspaces ---
 set $ws1 1
@@ -68,6 +85,8 @@ bindsym $mod+Shift+5 move container to workspace $ws5
 bindsym $mod+Shift+6 move container to workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7
 
+
+
 # --- Navegación ---
 bindsym $mod+Left focus left
 bindsym $mod+Right focus right
@@ -79,15 +98,20 @@ bindsym $mod+Shift+Right move right
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Down move down
 
+
 # --- Layout ---
 bindsym $mod+space layout toggle split
 bindsym $mod+Tab fullscreen toggle
 bindsym $mod+Shift+t layout stacking
 bindsym $mod+t layout tabbed
 
+
+
 # --- Floating ---
 bindsym $mod+s floating toggle
 #bindsym $mod+space focus mode_toggle
+
+
 
 # --- Resize ---
 #mode "resize" {
@@ -99,6 +123,8 @@ bindsym $mod+s floating toggle
 #}
 #bindsym $mod+r mode "resize"
 
+
+
 # Resize directo tipo bspwm
 bindsym $mod+Control+Left resize shrink width 20 px
 bindsym $mod+Control+Right resize grow width 20 px
@@ -106,6 +132,8 @@ bindsym $mod+Control+Up resize shrink height 20 px
 bindsym $mod+Control+Down resize grow height 20 px
 
 floating_modifier $mod
+
+
 
 # --- Cerrar ---
 bindsym $mod+q kill
@@ -140,8 +168,24 @@ bindsym $alt+Shift+Tab exec --no-startup-id i3-focus-last menu
 
 for_window [class=".*"] border pixel 1
 
+
+
+# --- Ventanas estilo bspwm
+# nuevas ventanas van dentro del contenedor actual
+for_window [class=".*"] focus
+# split por defecto
+default_orientation auto
+workspace_layout default
+# layouts útiles
+bindsym $mod+h split h
+bindsym $mod+v split v
+
+
+
 #bindsym $alt+Tab exec --no-startup-id ~/.config/i3/scripts/i3-focus-last-window
 #bindsym $alt+Shift+Tab exec --no-startup-id ~/.config/i3/scripts/i3-focus-last-window --reverse
+
+
 
 # --- Autostart ---
 exec --no-startup-id xset dpms 540 540 900
@@ -152,6 +196,8 @@ exec --no-startup-id xidlehook \
   --timer 900 'systemctl suspend' ''
 
 exec --no-startup-id wmname LG3D
+
+
 
 # Script monitores (el mismo que usas)
 #exec --no-startup-id ~/.screenlayout/resolucion.sh
@@ -181,7 +227,7 @@ exec --no-startup-id nm-applet
 #exec --no-startup-id blueman-applet
 exec --no-startup-id picom --backend glx --vsync
 #exec --no-startup-id nitrogen --restore
-exec --no-startup-id feh Pictures/Backgrounds/1.jpg --bg-scale
+exec --no-startup-id feh Pictures/Backgrounds/15.jpg --bg-scale
 
 
 exec --no-startup-id ~/.config/i3/polybar/launch.sh

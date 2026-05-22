@@ -28,7 +28,7 @@ typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 # numlockx on
 # ~/.zlogin
 last_login=$(last -1 "$USER" | head -n 1 | awk '{print $4, $5, $6, $7, "on", $2}')
-echo "Last login: $last_login\n"
+echo " Last login: $last_login\n"
 
 ## [Completion]
 ## Completion scripts setup. Remove the following line to uninstall
