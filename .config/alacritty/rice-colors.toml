@@ -14,14 +14,12 @@ text = "#bb9af7"
 # Normal colors
 [colors.normal]
 black = "#32344a"
-# blue = "#7aa2f7"
 blue = "#1271f7"
 cyan = "#449dab"
 green = "#25D366"
-magenta = "#ad8ee6"
+magenta = "#adadad"
 red = "#f7768e"
-# white = "#787c99"
-white = "#aaaaaa"
+white = "#dddddd"
 yellow = "#f0af68"
 
 # Bright colors

@@ -100,7 +100,7 @@ bindsym $mod+Shift+Down move down
 
 
 # --- Layout ---
-bindsym $mod+space layout toggle split
+bindsym $mod+$alt+space layout toggle split
 bindsym $mod+Tab fullscreen toggle
 bindsym $mod+Shift+t layout stacking
 bindsym $mod+t layout tabbed
@@ -137,6 +137,8 @@ floating_modifier $mod
 
 # --- Cerrar ---
 bindsym $mod+q kill
+#bindsym $mod+space exec setxkbmap us -variant altgr-intl # setxkbmap latam
+bindsym $mod+space exec bash -c 'setxkbmap -query | grep -q "layout.*latam" && setxkbmap us -variant altgr-intl || setxkbmap latam'
 for_window [class="Gimp"] move to workspace 8, floating enable
 for_window [class="Chromium"] move to workspace 2
 for_window [class="Galculator"] floating enable
@@ -224,7 +226,7 @@ exec --no-startup-id /usr/lib/xdg-desktop-portal-gtk
 #exec --no-startup-id xfce4-power-manager
 exec --no-startup-id xfce4-clipman
 exec --no-startup-id nm-applet
-#exec --no-startup-id blueman-applet
+exec --no-startup-id blueman-applet
 exec --no-startup-id picom --backend glx --vsync
 #exec --no-startup-id nitrogen --restore
 exec --no-startup-id feh Pictures/Backgrounds/15.jpg --bg-scale

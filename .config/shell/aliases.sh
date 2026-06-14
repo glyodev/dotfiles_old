@@ -46,3 +46,4 @@ alias feh-random='feh --bg-fill ~/.pictures/$(($RANDOM % $( ls ~/.pictures | wc 
 alias py='python'
 alias netr='sudo systemctl restart NetworkManager.service'
 alias pacman-syu='sudo pacman -Syu --noconfirm'
+alias npx-list='find ~/.npm/_npx -name package.json -exec jq -r '.name' {} \; | sort -u'
