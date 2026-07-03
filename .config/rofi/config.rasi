@@ -9,4 +9,6 @@
 
 //@theme "/home/glyo/.config/rofi/themes/rounded-purple-dark.rasi"
 
-@theme "/home/glyo/.config/rofi/themes/rounded-purple-dark.rasi"
+//@theme "/home/glyo/.config/rofi/themes/rounded-purple-dark.rasi"
+
+@theme "/home/glyo/.config/rofi/themes/spotlight-dark.rasi"
